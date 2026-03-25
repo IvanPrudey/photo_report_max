@@ -14,7 +14,7 @@ from .models import (
 class CustomUserAdmin(UserAdmin):
     list_display = [
         'username',
-        'telegram_id',
+        'max_user_id',
         'first_name',
         'last_name',
         'role',
@@ -23,7 +23,7 @@ class CustomUserAdmin(UserAdmin):
         'is_active'
     ]
     list_filter = ['role', 'is_verified', 'is_active', 'date_joined']
-    search_fields = ['username', 'telegram_id', 'first_name', 'last_name']
+    search_fields = ['username', 'max_user_id', 'first_name', 'last_name']
     ordering = ['-date_joined']
     fieldsets = (
         (None, {'fields': ('username', 'password')}),

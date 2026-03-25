@@ -33,9 +33,10 @@ def get_env_or_raise(var_name: str):
 
 
 SECRET_KEY = get_env_or_raise('SECRET_KEY')
-BOT_TOKEN = get_env_or_raise('BOT_TOKEN')
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = []
+MAX_API_URL = get_env_or_raise('MAX_API_URL')
+MAX_API_KEY = get_env_or_raise('MAX_API_KEY')
 
 
 # Application definition
