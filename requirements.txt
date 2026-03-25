@@ -1,0 +1,7 @@
+Django==4.2.25
+aiohttp==3.9.0
+pillow==11.3.0
+python-dotenv==1.2.1
+pytest==8.4.2
+pytest-django==4.11.1
+asgiref==3.10.0
