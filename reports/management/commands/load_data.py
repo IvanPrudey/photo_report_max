@@ -13,14 +13,11 @@ class Command(BaseCommand):
         self.load_trading_clients()
         self.load_categories()
         self.load_brands()
-        self.stdout.write(
-            self.style.SUCCESS('Все данные загружены успешно!')
-        )
 
     def load_trading_clients(self):
         csv_path = (
             Path(__file__).resolve().parents[3]
-            / 'data' 
+            / 'data'
             / 'tradingclient.CSV'
         )
         if not csv_path.exists():
