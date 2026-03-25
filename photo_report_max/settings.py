@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'reports.apps.ReportsConfig',
+    'max_bot.apps.MaxBotConfig',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +95,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = 'reports.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
