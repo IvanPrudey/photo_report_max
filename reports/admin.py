@@ -12,6 +12,7 @@ from .models import (
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
+    filter_horizontal = ()
     list_display = [
         'username',
         'max_user_id',
@@ -25,6 +26,7 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ['role', 'is_verified', 'is_active', 'date_joined']
     search_fields = ['username', 'max_user_id', 'first_name', 'last_name']
     ordering = ['-date_joined']
+    list_editable = ['is_verified', 'role']
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
@@ -43,7 +45,7 @@ class CustomUserAdmin(UserAdmin):
             'classes': ('wide',),
             'fields': (
                 'username', 'password1', 'password2',
-                'max_user_id', 'role', 'phone'
+                'max_user_id', 'role', 'phone', 'is_verified'
             ),
         }),
     )
