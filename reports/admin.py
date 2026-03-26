@@ -25,19 +25,14 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ['role', 'is_verified', 'is_active', 'date_joined']
     search_fields = ['username', 'max_user_id', 'first_name', 'last_name']
     ordering = ['-date_joined']
+
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         ('Персональная информация', {'fields': (
-            'first_name',
-            'last_name',
-            'email'
+            'first_name', 'last_name', 'email'
         )}),
-        ('Telegram данные', {'fields': (
-            'telegram_id',
-            'role',
-            'phone',
-            'is_verified',
-            'last_activity'
+        ('Max.ru данные', {'fields': (
+            'max_user_id', 'role', 'phone', 'is_verified', 'last_activity'
         )}),
         ('Разрешения', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         ('Важные даты', {'fields': ('last_login', 'date_joined')}),
@@ -47,16 +42,11 @@ class CustomUserAdmin(UserAdmin):
         (None, {
             'classes': ('wide',),
             'fields': (
-                'username',
-                'password1',
-                'password2',
-                'telegram_id',
-                'role',
-                'phone'
+                'username', 'password1', 'password2',
+                'max_user_id', 'role', 'phone'
             ),
         }),
     )
-    filter_horizontal = []
 
 
 @admin.register(CategoryProduct)
@@ -64,10 +54,6 @@ class CategoryProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'get_name_display']
     list_filter = ['name']
     search_fields = ['name']
-
-    def get_name_display(self, obj):
-        return obj.get_name_display()
-    get_name_display.short_description = 'Название категории'
 
 
 @admin.register(TradingClient)
@@ -87,13 +73,8 @@ class BrandProductAdmin(admin.ModelAdmin):
 @admin.register(PhotoReport)
 class PhotoReportAdmin(admin.ModelAdmin):
     list_display = [
-        'user',
-        'trading_client',
-        'category',
-        'brand',
-        'is_competitor',
-        'get_photos_count',
-        'created_at'
+        'user', 'trading_client', 'category', 'brand',
+        'is_competitor', 'get_photos_count', 'created_at'
     ]
     list_filter = ['is_competitor', 'created_at', 'trading_client', 'category']
     search_fields = ['user__username', 'trading_client__name', 'brand__name']
